@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SessionController@create');
+
+//registration routes
+Route::get('/register','RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
