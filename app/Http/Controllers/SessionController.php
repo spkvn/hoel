@@ -25,12 +25,40 @@ class SessionController extends Controller
     	}
         
         //add a way to find category and redirect based on that
-    	return redirect('/');
+    	return view(getUserView());
     }
 
     public function destroy()
     {
     	auth()->logout();
     	return redirect('/');
+    }
+
+    private function getUserView()
+    {
+    	$user = User::find(auth()->id());
+    	dd($user);
+    	switch ($user->category) 
+    	{
+    		case 'Administrator':
+    			return 'admin.index';
+    			break;
+
+    		case 'Reception':
+    			return 'recep.index';
+    			break;
+
+    		case 'Patron':
+    			return 'patron.index';
+    			break;
+
+    		case 'Housekeeping':
+    			return 'housekeep.index';
+    			break;
+    		
+    		default:
+    			return 'patron.index';
+    			break;
+    	}
     }
 }

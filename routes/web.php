@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/', 'SessionController@create');
+Route::get('/','SessionController@create');
+Route::get('/home', 'SessionController@create');
+Route::post('/login', 'SessionController@store');
+Route::get('/dashboard', 'SessionController@store');
 
 //registration routes
 Route::get('/register','RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
+
+//Route::get('/index', '')
