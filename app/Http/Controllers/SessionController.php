@@ -8,7 +8,7 @@ class SessionController extends Controller
 {
 	public function __construct()
 	{
-		//allow only guests to access loging
+		//allow only guests to access logging
 		$this->middleware('guest',['except' => 'destroy']);
 	}
 
@@ -23,9 +23,9 @@ class SessionController extends Controller
     	{
     		return back()->withErrors(['message' => 'Check Credentials']);
     	}
-        
+
         //add a way to find category and redirect based on that
-    	return view(getUserView());
+    	return redirect('/dashboard');
     }
 
     public function destroy()
@@ -34,10 +34,9 @@ class SessionController extends Controller
     	return redirect('/');
     }
 
-    private function getUserView()
+    /*private function getUserView()
     {
     	$user = User::find(auth()->id());
-    	dd($user);
     	switch ($user->category) 
     	{
     		case 'Administrator':
@@ -60,5 +59,5 @@ class SessionController extends Controller
     			return 'patron.index';
     			break;
     	}
-    }
+    }*/
 }

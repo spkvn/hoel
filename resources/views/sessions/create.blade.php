@@ -26,6 +26,7 @@
 			</div>
 
 			@include('layouts.errors')
+		</form> 
 		<div class="form-group">
 			<a href="/register">
 				<button type="submit" class="btn btn-default">
@@ -33,8 +34,6 @@
 				</button>
 			</a>
 		</div>
-		</form> 
-		
 
 	</div>
 @endsection

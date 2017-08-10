@@ -12,12 +12,16 @@
 */
 
 Route::get('/','SessionController@create');
-Route::get('/home', 'SessionController@create');
+Route::get('/home', 'SessionController@create')->name('login');
 Route::post('/login', 'SessionController@store');
-Route::get('/dashboard', 'SessionController@store');
+Route::get('/logout', 'SessionController@destroy');
 
 //registration routes
 Route::get('/register','RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
 
-//Route::get('/index', '')
+//authenticated users only
+Route::group(['middleware' => 'auth'], function ()
+{
+	Route::get('/dashboard', 'DashboardController@DecideWelcome')->name('admin.dashboard');
+});
