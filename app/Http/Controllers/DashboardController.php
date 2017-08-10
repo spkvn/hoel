@@ -13,19 +13,19 @@ class DashboardController extends Controller
 		switch(auth()->user()->category)
 		{
 			case 'Administrator':
-				$this->AdministratorWelcome();
+				return DashboardController::AdministratorWelcome();
 				break;
 
 			case 'Reception':
-				$this->ReceptionWelcome();
+				return DashboardController::ReceptionWelcome();
 				break;
 
-			case 'Housekeeper':
-				$this->HousekeeperWelcome();
+			case 'Housekeeping':
+				return DashboardController::HousekeepingWelcome();
 				break;
 
 			case 'Patron':
-				$this->PatronWelcome();
+				return DashboardController::PatronWelcome();
 				break;
 
 			default:
@@ -34,21 +34,21 @@ class DashboardController extends Controller
 	}
     public function AdministratorWelcome()
     {
-    	echo "Welcome Administrator";
+    	return view('dash.admin');
     }
 
     public function ReceptionWelcome()
     {
-    	echo "Welcome Receptionist";
+    	return view('dash.reception');
     }
 
     public function HousekeepingWelcome()
     {
-    	echo "Welcome Housekeeper";
+    	return view('dash.housekeeping');
     }
 
     public function PatronWelcome()
     {
-    	echo "Welcome Patron";
+    	return view('dash.patron');
     }
 }
