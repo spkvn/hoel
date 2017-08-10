@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>
-			Kevin's Hotel Proj
+			Hoel Proj. For a Hotel.
 		</title>
 		<!--Boostrap CDN-->
 		<link rel="stylesheet" 
