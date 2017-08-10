@@ -4,7 +4,7 @@
 		<h1>
 			Hello, {{auth()->user()->name}}.
 		</h1>
-		<p>You on the {{auth()->user()->category}} dashboard</p>
+		<p>You are on the {{auth()->user()->category}} dashboard</p>
 	</div>
 	<div class="row">
 		<div class="col-md-3 col-sm-12 col-xm-12">
