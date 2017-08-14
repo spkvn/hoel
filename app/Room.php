@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
    	/**
-      * The users that have booked this room
+      * The bookings of this room
       */
-    public function rooms()
+    public function bookings()
     {
-        return $this->belongsToMany('App\Booking','rooms');
+        return $this->hasMany(Booking::class);
     }
 }

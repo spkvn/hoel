@@ -28,10 +28,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * The rooms that belong to this user
+     * The bookings that belong to this user
      */
-    public function rooms()
+    public function bookings()
     {
-        return $this->belongsToMany('App\Booking','bookings');
+        return $this->hasMany(Booking::class);
     }
 }

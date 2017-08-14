@@ -14,7 +14,6 @@ class CreateBookingsTable extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            //$table->increments('booking_index');
             $table->unsignedInteger('room_id');
             $table->unsignedInteger('user_id');
             $table->float('price');
