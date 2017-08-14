@@ -14,16 +14,20 @@ class CreateBookingsTable extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('roomid');
-            $table->integer('userid');
+            //$table->increments('booking_index');
+            $table->unsignedInteger('room_id');
+            $table->unsignedInteger('user_id');
             $table->float('price');
             $table->date('check_in');
             $table->date('check_out');
+            //primary key.
+            $table->primary(['user_id','room_id']);
             $table->timestamps();
-            //foreign keys
-            $table->foreign('userid')->references('id')->on('users');
-            $table->foreign('roomid')->references('id')->on('rooms');
+        });
+
+        Schema::table('bookings', function(Blueprint $table){
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('room_id')->references('id')->on('rooms');
         });
     }
 

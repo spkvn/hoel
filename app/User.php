@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * The rooms that belong to this user
+     */
+    public function rooms()
+    {
+        return $this->belongsToMany('App\Booking','bookings');
+    }
 }
