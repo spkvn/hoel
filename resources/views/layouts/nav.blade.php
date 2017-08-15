@@ -14,13 +14,13 @@
 	@if($user)
 		@if($user->category == "Administrator")
 		<li>
-			<a href="/users/index">Manage Users</a>
+			<a href="/admin/users">Manage Users</a>
 		</li>
 		<li>
-			<a href="/rooms/index">Manage Rooms</a>
+			<a href="/admin/rooms">Manage Rooms</a>
 		</li>
 		<li>
-			<a href="/cards/index">Manage Cards</a>
+			<a href="/admin/cards">Manage Cards</a>
 		</li>
 		<li>
 			<a href="/logout">Log Out</a>

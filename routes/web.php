@@ -24,9 +24,12 @@ Route::post('/register', 'RegistrationController@store');
 Route::group(['middleware' => 'auth'], function ()
 {
 	Route::get('/dashboard', 'DashboardController@DecideWelcome')->name('admin.dashboard');
+	
 	Route::prefix('admin')->group(function () 
 	{
-        // Matches The "/admin/users" URL
-    	Route::get('users', 'AdminController@users');
+        // Matches The "/admin/user[s]?" URL
+    	Route::get('users', 'AdminController@users');			//list users
+    	Route::get('user/{user}', 'AdminController@editUser');	//display user form
+    	Route::post('user/{user}', 'UserController@update');	//update user model
 	});
 });

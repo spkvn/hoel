@@ -1,11 +1,6 @@
 @section('content')
 @extends('layouts.master')
-	<h1>Admin's User Management Page.</h1>
-	@if(isset($users))
-		<p>Users var Exist</p>
-	@else
-		<p>Users var doesn't exist</p>	
-	@endif
+	<h1>User Management</h1>
 	<table class="table table-hover">
 	    <thead>
 	      	<tr>
@@ -29,6 +24,7 @@
 						<a href="/admin/user/{{$user->id}}/delete">
 							<button class="btn btn-danger">Delete</button>
 						</a>
+
 					</td>
 				</tr>
 			@endforeach	
