@@ -11,13 +11,13 @@
 			<h2>Some helpful links</h2>
 		</div>
 		<div class="col-md-9 col-sm-12 col-xm-12">
-			<a href="/users">
+			<a href="/admin/users">
 				<button class="btn btn-default">Users</button>
 			</a>
-			<a href="/rooms">
+			<a href="/admin/rooms">
 				<button class="btn btn-default">Rooms</button>
 			</a>
-			<a href="/cards">
+			<a href="/admin/cards">
 				<button class="btn btn-default">Cards</button>
 			</a>
 		</div>
