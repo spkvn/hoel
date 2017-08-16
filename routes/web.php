@@ -31,5 +31,6 @@ Route::group(['middleware' => 'auth'], function ()
     	Route::get('users', 'AdminController@users');			//list users
     	Route::get('user/{user}', 'AdminController@editUser');	//display user form
     	Route::post('user/{user}', 'UserController@update');	//update user model
+    	Route::delete('/user/{user}','UserController@destroy');	//destroy the user model
 	});
 });

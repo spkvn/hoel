@@ -38,4 +38,11 @@ class UserController extends Controller
 
 		return view('admin.users', compact('users'));
     }
+
+    public function destroy(User $user)
+    {
+    	$user->delete();
+    	$users = User::all();
+    	return view('admin.users',compact('users'));
+    }
 }
