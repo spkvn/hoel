@@ -45,9 +45,36 @@ class UserController extends Controller
     	$users = User::all();
     	return view('admin.users',compact('users'));
     }
-    
-    public function editUser(User $user)
+
+    public function edit(User $user)
     {
     	return view('admin.edit.user',compact('user'));
+    }
+
+    public function create()
+    {
+    	return view('admin.create.user');
+    }
+
+    public function store()
+    {
+    	//validate
+		$this->validate(request(),[
+				'name' => 'required',
+				'email' => 'required|email',
+				'password' => 'required|min:6|confirmed'
+			]);
+
+		//crypt the pwd.
+		$passwordCrypt = bcrypt(request('password'));
+
+		$user = User::create([
+				'name'  => request('name'),
+				'email' => request('email'),
+				'password' => $passwordCrypt,
+				'category' => request('category')
+			]);
+
+		return redirect('/admin/users');
     }
 }

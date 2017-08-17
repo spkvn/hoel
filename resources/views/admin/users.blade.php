@@ -1,6 +1,13 @@
 @section('content')
 @extends('layouts.master')
-	<h1>User Management</h1>
+	<div class="row">
+		<div class="col-xs-4">
+			<h1>User Management</h1>
+		</div>
+		<div class="col-xs-8">
+			<a href="/admin/user/create"><button class="btn btn-default" style="float:right;">Add User</button></a>
+		</div>
+	</div>
 	<table class="table table-hover">
 	    <thead>
 	      	<tr>
