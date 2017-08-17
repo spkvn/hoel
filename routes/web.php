@@ -27,10 +27,13 @@ Route::group(['middleware' => 'auth'], function ()
 	
 	Route::prefix('admin')->group(function () 
 	{
-        // Matches The "/admin/user[s]?" URL
+        //Matches The "/admin/user[s]?" URL
     	Route::get('users', 'AdminController@users');			//list users
-    	Route::get('user/{user}', 'AdminController@editUser');	//display user form
+    	Route::get('user/{user}', 'UserController@editUser');	//display user form
     	Route::post('user/{user}', 'UserController@update');	//update user model
     	Route::delete('/user/{user}','UserController@destroy');	//destroy the user model
+
+    	//Matches the "/admin/room[s]?" URL
+    	Route::get('rooms', 'AdminController@rooms');
 	});
 });
