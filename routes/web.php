@@ -29,13 +29,18 @@ Route::group(['middleware' => 'auth'], function ()
 	{
         //Matches The "/admin/user[s]?" URL
     	Route::get('users', 'AdminController@users');			//list users
-    	Route::get('user/create', 'UserController@create');		//display user form with no route-model
+    	Route::get('user/create', 'UserController@create');		//display user form for creation
     	Route::get('user/{user}', 'UserController@edit');		//display user form
     	Route::post('user/store', 'UserController@store'); 		//store the user in db.
     	Route::post('user/{user}', 'UserController@update');	//update user model
     	Route::delete('/user/{user}','UserController@destroy');	//destroy the user model
 
     	//Matches the "/admin/room[s]?" URL
-    	Route::get('rooms', 'AdminController@rooms');
+    	Route::get('/rooms', 'AdminController@rooms');			//list rooms
+    	Route::get('/room/create', 'RoomController@create');	//display room form for creation
+    	Route::get('/room/{room}', 'RoomController@edit');		//display room form
+    	Route::post('/room/store', 'RoomController@store');		//store room in db
+    	Route::post('/room/{room}','RoomController@update');	//update room model
+    	Route::delete('/room/{room}','RoomController@destroy');	//destroy room model
 	});
 });
