@@ -7,6 +7,6 @@
 		<div class="col-xs-12 col-sm-4">
 			<input type="submit" class="btn btn-primary" value="search">
 		</div>
-		@include('layouts.errors')
 	</form>
 </div>
+@include('layouts.errors')
