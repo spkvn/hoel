@@ -10,22 +10,34 @@ class RoomController extends Controller
 	public function update(Room $room)
     {
     	$this->validate(request(),[
-    		'room_number' => 'numeric',
-    		'beds' => 'numeric',
-    		'max_capacity' => 'numeric',
-    		'price_per_night' => 'numeric',
+    		'room_number' => 'numeric|nullable',
+    		'beds' => 'numeric|nullable',
+    		'max_capacity' => 'numeric|nullable',
+    		'price_per_night' => 'numeric|nullable',
     	]);
 
-    	$room->room_number = request('room_number');
-    	$room->beds = request('bed');
-    	$room->max_capacity = request('max_capacity');
-    	$room->price_per_night = request('price_per_night');
+        if(request('room_number') != null)
+        {
+        	$room->room_number = request('room_number');
+        }
+        if(request('bed') != null)
+        {
+        	$room->beds = request('bed');
+        }
+        if(request('max_capacity') != null)
+        {
+        	$room->max_capacity = request('max_capacity');
+        }
+        if(request('price_per_night') != null)
+        {
+        	$room->price_per_night = request('price_per_night');
+        }
 
     	$room->save();
 
     	$rooms = Room::all();
 
-		return redirect('admin.rooms',compact('rooms'));
+		return view('admin.rooms',compact('rooms'));
     }
 
     public function destroy(Room $room)
