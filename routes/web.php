@@ -30,7 +30,8 @@ Route::group(['middleware' => 'auth'], function ()
         //Matches The "/admin/user[s]?" URL
     	Route::get('users', 'AdminController@users');			//list users
     	Route::get('user/create', 'UserController@create');		//display user form for creation
-    	Route::get('user/{user}', 'UserController@edit');		//display user form
+        Route::get('user/{user}', 'UserController@edit');       //display user form
+        Route::post('user/search', 'UserController@search');     //search for user based on property
     	Route::post('user/store', 'UserController@store'); 		//store the user in db.
     	Route::post('user/{user}', 'UserController@update');	//update user model
     	Route::delete('/user/{user}','UserController@destroy');	//destroy the user model

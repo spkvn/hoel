@@ -8,6 +8,7 @@
 			<a href="/admin/user/create"><button class="btn btn-default" style="float:right;">Add User</button></a>
 		</div>
 	</div>
+	@include('admin.search.usersearch')
 	<table class="table table-hover">
 	    <thead>
 	      	<tr>

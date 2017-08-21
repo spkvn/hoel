@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\SearchService;
 use App\User;
 
 class UserController extends Controller
 {
+	public function __construct()
+	{
+		$this->SearchService = new SearchService();
+	}
+
     public function update(User $user)
     {
     	$this->validate(request(),[
@@ -37,6 +43,12 @@ class UserController extends Controller
 		$users = User::all();
 
 		return view('admin.users', compact('users'));
+    }
+
+    public function search()
+    {
+    	$users = $this->SearchService->UserSearch(request('search_term'));
+    	return view('admin.users', compact('users'));
     }
 
     public function destroy(User $user)
