@@ -48,7 +48,15 @@ class UserController extends Controller
     public function search()
     {
     	$users = $this->SearchService->UserSearch(request('search_term'));
-    	return view('admin.users', compact('users'));
+    	
+    	if($users->isEmpty())
+		{
+			return view('admin.users',['users' => null])->withErrors(['no_results' => 'We did not find any users with the search term: '.request('search_term').', please try again']);
+		}
+		else
+		{
+			return view('admin.users', compact('users'));
+		}
     }
 
     public function destroy(User $user)
