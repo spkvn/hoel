@@ -8,7 +8,7 @@
 			<a href="/admin/room/create"><button class="btn btn-default" style="float:right;">Add Room</button></a>
 		</div>
 	</div>
-	@include('roomsearch.blade.php')
+	@include('admin.search.roomsearch')
 	@if(isset($rooms))
 		<table class="table table-hover">
 		    <thead>

@@ -3,10 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\SearchService;
 use App\Room as Room;
 
 class RoomController extends Controller
 {
+    public function __construct()
+    {
+        $this->SearchService = new SearchService();
+    }
+
+    public function search()
+    {
+        $rooms = $this->SearchService->RoomSearch(request('search_term'));
+        
+        if($rooms->isEmpty())
+        {
+            return view('admin.rooms',['users' => null])->withErrors(['no_results' => 'We did not find any users with the search term: '.request('search_term').', please try again']);
+        }
+        else
+        {
+            return view('admin.rooms', compact('rooms'));
+        }
+    }
+
 	public function update(Room $room)
     {
     	$this->validate(request(),[
