@@ -44,5 +44,10 @@ Route::group(['middleware' => 'auth'], function ()
     	Route::post('/room/store', 'RoomController@store');		//store room in db
     	Route::post('/room/{room}','RoomController@update');	//update room model
     	Route::delete('/room/{room}','RoomController@destroy');	//destroy room model
+
+        //Matches the "/admin/booking[s]?" URL 
+        Route::get('/bookings','AdminController@bookings');         //list bookings
+        Route::get('/bookings/create/','BookingController@create'); //display bookings form for creation
+        
 	});
 });

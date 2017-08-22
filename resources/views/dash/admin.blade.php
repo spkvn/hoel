@@ -20,6 +20,9 @@
 			<a href="/admin/cards">
 				<button class="btn btn-default">Cards</button>
 			</a>
+			<a href="/admin/bookings">
+				<button class="btn btn-default">Bookings</button>
+			</a>
 		</div>
 	</div> 
 @endsection
