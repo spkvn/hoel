@@ -47,7 +47,10 @@ Route::group(['middleware' => 'auth'], function ()
 
         //Matches the "/admin/booking[s]?" URL 
         Route::get('/bookings','AdminController@bookings');         //list bookings
-        Route::get('/bookings/create/','BookingController@create'); //display bookings form for creation
+        Route::get('/booking/create/','BookingController@create'); //display bookings form for creation
+        Route::post('/booking/store', 'BookingController@store'); //create booking and store.
+
+
         
 	});
 });
