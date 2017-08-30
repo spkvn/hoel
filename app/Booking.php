@@ -28,4 +28,6 @@ class Booking extends Model
         //multiply p/pn by about of days spent. 
         return $this->room->price_per_night * (int)$diff->days;
     }
+
+    protected $fillable = ['room_id', 'user_id','check_in','check_out'];
 }
