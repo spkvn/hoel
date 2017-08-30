@@ -19,6 +19,7 @@
 		        	<th>User Name</th>
 		        	<th>Check In</th>
 		        	<th>Check Out</th>
+		        	<th>Price</th>
 		        	<th>Controls</th>
 		      	</tr>
 		    </thead>
@@ -31,6 +32,7 @@
 							<td>{{$booking->user->name}}</td>
 							<td>{{$booking->check_in}}</td>
 							<td>{{$booking->check_out}}</td>
+							<td>${{$booking->cost()}}</td>
 							<td>
 								<a href="/admin/booking/{{$booking->room_id}}/{{$booking->user_id}}">
 									<button class="btn btn-primary">Edit</button>
