@@ -16,8 +16,8 @@ class BookingController extends Controller
     	$this->validate(request(),[
     		'room_number' => 'required|numeric',
     		'email' => 'required|email',
-    		'check_in' => 'date|required',
-    		'check_out' => 'date|required'
+    		'check_in' => 'date|required|date_format:d/m/Y|after:today',
+    		'check_out' => 'date|required|date_format:d/m/Y|after:check_in'
     	]);
 
     	$user = App\User::where('email', '=', request('email'))
