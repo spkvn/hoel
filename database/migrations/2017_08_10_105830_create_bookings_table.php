@@ -16,7 +16,6 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->unsignedInteger('room_id');
             $table->unsignedInteger('user_id');
-            $table->float('price');
             $table->date('check_in')->nullable();
             $table->date('check_out')->nullable();
             //primary key.
