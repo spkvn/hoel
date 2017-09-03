@@ -5,7 +5,7 @@
 			<h1>Booking Management</h1>
 		</div>
 		<div class="col-xs-8">
-			<a href="/admin/booking/create"><button class="btn btn-default" style="float:right;">Add Booking</button></a>
+			<a href="/admin/booking/create"><button class="btn btn-default" style="float:right;margin-top:2%;">Add Booking</button></a>
 		</div>
 	</div>
 	@include('admin.search.bookingsearch')

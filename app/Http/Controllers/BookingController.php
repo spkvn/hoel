@@ -7,11 +7,32 @@ use App\User;
 use App\Room;
 use App\Booking;
 use App\Services\BookingService;
+use App\Services\SearchService;
 use App\Http\Requests\BookingRequest;
 use Carbon\Carbon;
 
 class BookingController extends Controller
 {
+    public function __construct()
+    {
+        $this->SearchService = new SearchService();
+    }
+
+    /*TODO Fix search for bookings. Composite keys are shitty
+    public function search()
+    {
+        $bookings = $this->SearchService->BookingSearch(request('search_term'));
+        
+        if($bookings->isEmpty())
+        {
+            return view('admin.bookings',['users' => null])->withErrors(['no_results' => 'We did not find any bookings with the search term: '.request('search_term').', please try again']);
+        }
+        else
+        {
+            return view('admin.rooms', compact('bookings'));
+        }
+    }*/
+
     public function create()
     {
     	return view('admin.create.booking');

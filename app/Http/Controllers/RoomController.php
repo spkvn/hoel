@@ -19,7 +19,7 @@ class RoomController extends Controller
         
         if($rooms->isEmpty())
         {
-            return view('admin.rooms',['users' => null])->withErrors(['no_results' => 'We did not find any users with the search term: '.request('search_term').', please try again']);
+            return view('admin.rooms',['users' => null])->withErrors(['no_results' => 'We did not find any rooms with the search term: '.request('search_term').', please try again']);
         }
         else
         {

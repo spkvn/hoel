@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('/bookings','AdminController@bookings');
         Route::get('/booking/create/','BookingController@create'); 
         Route::get('/booking/{room}/{user}/{check_in}', 'BookingController@edit');
+        Route::post('/booking/search','BookingController@search');
         Route::post('/booking/store', 'BookingController@store');
         Route::post('/booking/{room}/{user}/{check_in}', 'BookingController@update'); 
         Route::delete('/booking/{room}/{user}/{check_in}','BookingController@destroy');

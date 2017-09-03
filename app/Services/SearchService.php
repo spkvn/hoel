@@ -3,6 +3,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Booking;
 use App\Room;
 
 class SearchService 
@@ -41,5 +42,23 @@ class SearchService
 		}
 
 		return $rooms;
+	}
+
+	/*Currently Broken*/
+	public function BookingSearch($searchString)
+	{
+		$searchArray = explode(':',$searchString);
+
+		if(count($searchArray) > 1)
+		{
+			$bookings = Booking::where($searchArray[0],'like','%'.$searchArray[1].'%')->get();
+		}
+		else
+		{
+			$user = User::where('name', 'like', '%'.$searchString.'%')->get();
+			$bookings = Booking::where('user_id', '=', $user->id)->get();
+		}
+
+		return $bookings;
 	}
 }
