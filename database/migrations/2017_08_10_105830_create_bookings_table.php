@@ -19,7 +19,7 @@ class CreateBookingsTable extends Migration
             $table->date('check_in')->nullable();
             $table->date('check_out')->nullable();
             //primary key.
-            $table->primary(['user_id','room_id']);
+            $table->primary(['user_id','room_id','check_in']);
             $table->timestamps();
         });
 
