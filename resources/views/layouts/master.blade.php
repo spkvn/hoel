@@ -10,9 +10,11 @@
 		  crossorigin="anonymous">
 	</head>
 
-	<body style="padding-top:65px;">
+	<body>
 	@include('layouts.nav')
-	<div class="container">
+	@include('layouts.background')
+	<div style="padding-top:65px; /* for background image z-index: 10;*/" 
+		 class="container">
 		<div>
 			@yield('content')
 		</div>
