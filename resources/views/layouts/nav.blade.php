@@ -104,4 +104,14 @@
 				<button class="btn navbar-btn btn-warning">Log Out</button>
 		</a>
 	@endif
+	<a href="http://vhom.org/">
+		<img class="navbar_icon" style="height:35px;float:right;margin-top:0.3%;margin-right:1%;" 
+			 src="https://cdn3.iconfinder.com/data/icons/glypho-free/64/home-128.png"
+			 alt="Check out my other projects">
+	</a>
+	<a href="https://github.com/spkvn/hoel">
+		<img class="navbar_icon" style="height:35px;float:right;margin-top:0.3%;margin-right:1%" 
+			 src="http://iconshow.me/media/images/ui/ios7-icons/png/128/social-github-outline.png"
+			 alt="check this project out on github">
+	</a>
 </nav>

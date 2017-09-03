@@ -25,8 +25,8 @@ class BookingRequest extends FormRequest
         return [
             'room_number' => 'required|numeric',
             'email' => 'required|email',
-            'check_in' => 'required|date_format:d/m/Y',
-            'check_out' => 'required|date_format:d/m/Y'
+            'check_in' => 'required|date_multi_format:"d/m/Y","Y-m-d"',
+            'check_out' => 'required|date_multi_format:"d/m/Y","Y-m-d"'
         ];
     }
 }

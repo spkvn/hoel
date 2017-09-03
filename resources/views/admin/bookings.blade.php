@@ -34,7 +34,7 @@
 							<td>{{$booking->check_out}}</td>
 							<td>${{$booking->cost()}}</td>
 							<td>
-								<a href="/admin/booking/{{$booking->room_id}}/{{$booking->user_id}}">
+								<a href="/admin/booking/{{$booking->room_id}}/{{$booking->user_id}}/{{$booking->check_in}}">
 									<button class="btn btn-primary">Edit</button>
 								</a>
 
@@ -47,7 +47,7 @@
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h3 class="modal-title" id="deleteModalLabel{{$booking->_room_id.'_'.$booking->user_id}}">Delete Room Booking for {{$booking->user->name.' in room '.$booking->room->room_number}}?</h3>
+												<h3 class="modal-title" id="deleteModalLabel{{$booking->_room_id.'_'.$booking->user_id.'_'.$booking->check_in}}">Delete Room Booking for {{$booking->user->name.' in room '.$booking->room->room_number}}?</h3>
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -56,7 +56,7 @@
 												<p>This cannot be undone.</p>
 											</div>
 											<div class="modal-footer">
-												<form class="form-inline" method="POST" action="/admin/booking/{{$booking->_room_id.'_'.$booking->user_id}}">
+												<form class="form-inline" method="POST" action="/admin/booking/{{$booking->room_id.'/'.$booking->user_id.'/'.$booking->check_in}}">
 													<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													{{method_field('DELETE')}}
 													{{csrf_field()}}
