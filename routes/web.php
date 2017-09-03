@@ -45,6 +45,11 @@ Route::group(['middleware' => 'auth'], function ()
     	Route::post('/room/{room}','RoomController@update');	
     	Route::delete('/room/{room}','RoomController@destroy');
 
+        //Matches the "/admin/card[s]?" URL
+        Route::get('/cards','AdminController@cards');
+        Route::get('/card/create','CardController@create');
+        Route::get('/card/{card}','CardController@edit');
+
         //Matches the "/admin/booking[s]?" URL 
         Route::get('/bookings','AdminController@bookings');
         Route::get('/booking/create/','BookingController@create'); 
@@ -53,6 +58,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::post('/booking/store', 'BookingController@store');
         Route::post('/booking/{room}/{user}/{check_in}', 'BookingController@update'); 
         Route::delete('/booking/{room}/{user}/{check_in}','BookingController@destroy');
+
 
         
 	});

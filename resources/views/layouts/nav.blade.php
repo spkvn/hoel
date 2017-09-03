@@ -1,12 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
+	<link href="{{URL::asset('css/nav.css')}}" type="text/css" rel="stylesheet">
 	<a href="/">
-		<p class="navbar-text" 
-		   style="font-family:consolas; 
-			   border:1px solid rgb(119,119,119); 
-			   padding:0px 10px 0px 10px;
-			   font-size:12pt;
-		">
-			   HOEL.ORG
+		<p class="navbar-text kNavLogo" >
+			   HOEL.VHOM.ORG
 		</p>
 	</a>
 	<!--Pages exclusive to guests-->
@@ -104,13 +100,13 @@
 				<button class="btn navbar-btn btn-warning">Log Out</button>
 		</a>
 	@endif
-	<a href="http://vhom.org/">
-		<img class="navbar_icon" style="height:35px;float:right;margin-top:0.3%;margin-right:1%;" 
+	<a href="http://vhom.org/" class="kNavbar_link_icon">
+		<img class="kNavbar_icon"
 			 src="https://staffsunion.s3.amazonaws.com/greenpad/images/icon_home.png"
 			 alt="Check out my other projects">
 	</a>
-	<a href="https://github.com/spkvn/hoel">
-		<img class="navbar_icon" style="height:35px;float:right;margin-top:0.3%;margin-right:1%" 
+	<a href="https://github.com/spkvn/hoel" class="kNavbar_link_icon">
+		<img class="kNavbar_icon"
 			 src="http://iconshow.me/media/images/ui/ios7-icons/png/128/social-github-outline.png"
 			 alt="check this project out on github">
 	</a>
