@@ -10,11 +10,9 @@
 		  crossorigin="anonymous">
 	</head>
 
-	<body>
+	<body style="padding-top:65px;">
+	@include('layouts.nav')
 	<div class="container">
-		<div class="row">
-			@include('layouts.nav')
-		</div>
 		<div>
 			@yield('content')
 		</div>
