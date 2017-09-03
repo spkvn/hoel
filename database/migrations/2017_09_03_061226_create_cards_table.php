@@ -15,8 +15,8 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('access');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('access')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
 
             //FK constraints

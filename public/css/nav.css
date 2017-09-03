@@ -1,0 +1,17 @@
+.kNavLogo{
+	font-family:consolas; 
+	border:1px solid rgb(119,119,119); 
+	padding:0px 10px 0px 10px;
+	font-size:12pt;
+}
+.kNavbar_icon{
+	height:35px;
+	float:right;
+	margin-top:0.3%;
+	margin-right:1%;
+}
+
+.kNavbar_link_icon:hover > img{
+	-webkit-filter: blur(1px);
+   filter: blur(1px);
+}

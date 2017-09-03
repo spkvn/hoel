@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\User as User;
 use \App\Room as Room;
 use \App\Booking as Booking;
+use \App\Card as Card;
 
 class AdminController extends Controller
 {
@@ -28,5 +29,12 @@ class AdminController extends Controller
     {
         $bookings = Booking::all();
         return view('admin.bookings',compact('bookings'));
+    }
+
+    //return admin cards view
+    public function cards()
+    {
+        $cards = Card::all();
+        return view('admin.cards',compact('cards'));
     }
 }
