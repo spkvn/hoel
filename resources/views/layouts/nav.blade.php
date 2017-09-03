@@ -106,7 +106,7 @@
 	@endif
 	<a href="http://vhom.org/">
 		<img class="navbar_icon" style="height:35px;float:right;margin-top:0.3%;margin-right:1%;" 
-			 src="https://cdn3.iconfinder.com/data/icons/glypho-free/64/home-128.png"
+			 src="https://staffsunion.s3.amazonaws.com/greenpad/images/icon_home.png"
 			 alt="Check out my other projects">
 	</a>
 	<a href="https://github.com/spkvn/hoel">
