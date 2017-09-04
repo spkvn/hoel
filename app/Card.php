@@ -9,12 +9,14 @@ class Card extends Model
 	//the room for this card
     public function room()
     {
-    	return $this->has('App\Room');
+    	return $this->hasOne(Room::class,'id', 'access');
     }
 
     //the user who has this card
     public function user()
     {
-    	return $this->has(User::class,'user_id', 'id');
+    	return $this->hasOne(User::class,'id', 'user_id');
     }
+
+    protected $fillable = ['access', 'user_id'];
 }
