@@ -20,9 +20,9 @@
 		      	<tr>
 		    		<th>Card ID</th>
 		    		<th>Access to Room:</th>
-		    		<th>Room's ID</th>
+		    		<th>Rooms ID</th>
 		    		<th>User</th>
-		    		<th>User's ID</th>
+		    		<th>Users ID</th>
 		    		<th>Controls</th>
 		      	</tr>
 	      	</thead>

@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function ()
         Route::get('/card/create','CardController@create');
         Route::get('/card/{card}','CardController@edit');
         Route::post('/card/store','CardController@store');
+        Route::post('/card/{card}','CardController@update');
 
         //Matches the "/admin/booking[s]?" URL 
         Route::get('/bookings','AdminController@bookings');

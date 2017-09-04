@@ -16,7 +16,6 @@ class CardController extends Controller
 
     public function store()
     {
-
     	$this->validate(request(), [
             'room_number' => 'required|numeric',
             'email' => 'required|email'
@@ -35,6 +34,32 @@ class CardController extends Controller
     	]);
 
     	return redirect('admin/cards');
+    }
+
+    public function edit(Card $card)
+    {
+    	return view('admin.edit.card',compact('card'));
+    }
+
+    public function update(Card $card)
+    {
+    	$this->validate(request(), [
+            'room_number' => 'required|numeric',
+            'email' => 'required|email'
+    	]);
+    	$user = User::where('email', '=', request('email'))
+    				->where('category' , '=', 'Patron')
+    				->first();
+	
+    	$room = Room::where('room_number','=', request('room_number'))
+    				->first();
+
+		$card->user_id = $user->id;
+		$card->access  = $room->id;
+
+		$card->save();
+
+		return redirect('/admin/cards/');
     }
 
 }
