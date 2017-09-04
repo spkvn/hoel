@@ -23,7 +23,7 @@ Route::post('/register', 'RegistrationController@store');
 //authenticated users only
 Route::group(['middleware' => 'auth'], function ()
 {
-	Route::get('/dashboard', 'DashboardController@DecideWelcome')->name('admin.dashboard');
+	Route::get('/dashboard', 'DashboardController@DecideWelcome')->name('dashboard');
 	
 	Route::prefix('admin')->group(function () 
 	{

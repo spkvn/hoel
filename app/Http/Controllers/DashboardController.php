@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
+use App\Booking;
+use App\Room;
+use App\Card;
 
 class DashboardController extends Controller
 {
-    //
-
 	public function DecideWelcome()
 	{
 		switch(auth()->user()->category)
@@ -49,6 +52,9 @@ class DashboardController extends Controller
 
     public function PatronWelcome()
     {
-    	return view('dash.patron');
+    	$user 	  = Auth::User();
+    	$bookings = $user->bookings;
+
+    	return view('dash.patron',compact('bookings'));
     }
 }
