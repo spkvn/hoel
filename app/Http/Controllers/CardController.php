@@ -62,4 +62,11 @@ class CardController extends Controller
 		return redirect('/admin/cards/');
     }
 
+    public function destroy(Card $card)
+    {
+    	$card->delete();
+
+    	return redirect('admin/cards');
+    }
+
 }
