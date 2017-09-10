@@ -54,7 +54,6 @@ class DashboardController extends Controller
     {
     	$user 	  = Auth::User();
     	$bookings = $user->bookings;
-
     	return view('dash.patron',compact('bookings'));
     }
 }

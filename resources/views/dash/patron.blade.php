@@ -27,10 +27,10 @@
 								Room Number: {{$booking->room->room_number}}
 							</div>
 							<div class="col-xs-6">
-								Check in: {{$booking->check_in}}
+								Check in: {{\Carbon\Carbon::createFromTimeStamp(strtotime($booking->check_in))->toFormattedDateString()}}
 							</div>
 							<div class="col-xs-6">
-								Check out: {{$booking->check_out}}
+								Check out: {{\Carbon\Carbon::createFromTimeStamp(strtotime($booking->check_out))->toFormattedDateString()}}
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-3">
