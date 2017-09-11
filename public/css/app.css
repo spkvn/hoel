@@ -40,9 +40,11 @@ h2 {
 }
 .dash_btn_div{
 	height: 50%;
-	text-align:center;
 	color:black;
 	font-size:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .dash_btn_div > p {
 	font-size:15px;
