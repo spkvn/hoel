@@ -12,9 +12,35 @@
 			<h3>Put some buttons here</h3>
 		</div>
 		<div class="col-md-9 col-sm-12 col-xs-12">
-			@if(isset($bookings))
-				<h2>Your current bookings</h2>
-				@foreach($bookings as $booking)
+			@if(!(isset($currentBooking) && isset($futureBookings)))
+				<h2>You have no bookings.</h2>
+			@endif
+			@if(isset($currentBooking))
+				<h2>Your current Booking </h2>
+				<div class="row">
+						<div class="col-xs-12 col-md-3">
+							<div class="col-xs-12">
+								Booking for:<br/> 
+								<strong>{{auth()->user()->name}}</strong>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<div class="col-xs-12">
+								Room Number: {{$currentBooking->room->room_number}}
+							</div>
+							<div class="col-xs-6">
+								Check in: {{\Carbon\Carbon::createFromTimeStamp(strtotime($currentBooking->check_in))->toFormattedDateString()}}
+							</div>
+							<div class="col-xs-6">
+								Check out: {{\Carbon\Carbon::createFromTimeStamp(strtotime($currentBooking->check_out))->toFormattedDateString()}}
+							</div>
+						</div>				
+					</div>
+				<hr/>
+			@endif
+			@if(isset($futureBookings))
+				<h2>Your Future bookings</h2>
+				@foreach($futureBookings as $booking)
 					<div class="row">
 						<div class="col-xs-12 col-md-3">
 							<div class="col-xs-12">

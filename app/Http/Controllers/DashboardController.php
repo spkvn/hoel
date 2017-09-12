@@ -8,6 +8,7 @@ use App\User;
 use App\Booking;
 use App\Room;
 use App\Card;
+use App\Services\PatronService;
 
 class DashboardController extends Controller
 {
@@ -53,7 +54,10 @@ class DashboardController extends Controller
     public function PatronWelcome()
     {
     	$user 	  = Auth::User();
-    	$bookings = $user->bookings;
-    	return view('dash.patron',compact('bookings'));
+    	$currentBooking = PatronService::GetCurrentBooking($user);
+    	$futureBookings = PatronService::GetFutureBookings($user);
+    	return view('dash.patron')
+    		   ->with('currentBooking', $currentBooking)
+    		   ->with('futureBookings', $futureBookings);
     }
 }

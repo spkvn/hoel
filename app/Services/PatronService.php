@@ -1,5 +1,5 @@
 <?php 
-namespace App\Service;
+namespace App\Services;
 
 use App\Booking;
 use App\Room;
@@ -13,18 +13,20 @@ class PatronService
 {
 	public static function GetCurrentBooking(User $user)
 	{
-		$currentBooking = $user->bookings->where('check_in', '<', date('d/m/Y'))
-										 ->where('check_out', '>' date('d/m/Y'))
-										 ->first();
-
-		return $currentBooking;
+		return $user->bookings->where('check_in', '<=', date('Y/m/d'))
+							  ->where('check_out', '>=', date('Y/m/d'))
+							  ->first();
 	}
 
 	public static function GetFutureBookings(User $user)
 	{
-		$futureBookings = $user->bookings->where('check_in', '>', date('d/m/Y'))
-										 ->get();
-		return $futureBookings;
+		return 	$user->bookings->where('check_in', '>', date('Y/m/d'))
+					 		   ->all();
+	}
+
+	public static function GetPastBookings(User $user)
+	{
+		return $user->bookings->where('check_out', '<', date('Y/m/d'))->all();
 	}
 
 }
