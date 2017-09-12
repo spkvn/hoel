@@ -59,7 +59,7 @@ class BookingController extends Controller
 	    		'check_in' => $CI->toDateTimeString(),
 	    		'check_out' => $CO->toDateTimeString()
 	    	]);
-	    	return redirect('admin.bookings');
+	    	return redirect('/admin/bookings');
     	}			
     	else
     	{
