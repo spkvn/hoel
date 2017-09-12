@@ -90,11 +90,6 @@
 				[To Be Completed]Your Cards
 			</button>
 		</a>
-		<a href="/logout">
-			<button class="btn btn-default navbar-btn">
-				Log Out
-			</button>
-		</a>
 		@endif
 		<a href="/logout">
 				<button class="btn navbar-btn btn-warning">Log Out</button>

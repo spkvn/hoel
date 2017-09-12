@@ -20,13 +20,12 @@ class PatronService
 
 	public static function GetFutureBookings(User $user)
 	{
-		return 	$user->bookings->where('check_in', '>', date('Y/m/d'))
-					 		   ->all();
+		return 	$user->bookings->where('check_in', '>', date('Y/m/d'));
 	}
 
 	public static function GetPastBookings(User $user)
 	{
-		return $user->bookings->where('check_out', '<', date('Y/m/d'))->all();
+		return $user->bookings->where('check_out', '<', date('Y/m/d'));
 	}
 
 }
