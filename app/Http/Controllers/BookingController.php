@@ -121,6 +121,21 @@ class BookingController extends Controller
             return redirect('admin/booking/'.$origRoom_id.'/'.$origUser_id.'/'.$origCheck_in)
                    ->withErrors('Room unavailable at '.$CI->toDateString());
         }
+    }
 
+    public function PastBookings()
+    {
+        if(auth()->user()->category != 'Patron')
+        {
+            //you're not a patron, you can't book sir!
+            return redirect()->route('dashboard');
+        }
+        else
+        {
+            $pastBookings = auth()->user()
+                                  ->bookings()
+                                  ->where('check_out', '<' , date('Y/m/d'));
+            return view('patron.booking.past')->with('pastBookings',$pastBookings->get());
+        }
     }
 }

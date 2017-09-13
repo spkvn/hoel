@@ -45,6 +45,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column-reverse;
 }
 .dash_btn_div > p {
 	font-size:15px;

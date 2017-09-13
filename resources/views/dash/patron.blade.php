@@ -8,8 +8,18 @@
 	</div>
 	<div class="row">
 		<div class="col-md-3 col-sm-12 col-xs-12 dash_content">
-			<h2>Some helpful links</h2>
-			<h3>Put some buttons here</h3>
+			<a href="/patron/booking/past">
+				<div class="col-xs-12 dash_btn_div">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<p>Past Bookings</p>
+				</div>
+			</a>
+			<a href="/patron/booking/create">
+				<div class="col-xs-12 dash_btn_div">
+					<i class="fa fa-plus" aria-hidden="true"></i>
+					<p>Create Booking</p>
+				</div>
+			</a>
 		</div>
 		<div class="col-md-9 col-sm-12 col-xs-12 dash_content">
 			@if(!(isset($currentBooking) && isset($futureBookings)))
