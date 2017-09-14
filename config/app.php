@@ -228,7 +228,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        /*my own classes!*/
+        'DisplayService' => App\Services\DisplayService::class,
+        'BookingService' => App\Services\BookingService::class
     ],
 
 ];
