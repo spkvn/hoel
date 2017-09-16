@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Room;
 use Illuminate\Http\Request;
+use App\Http\Requests\FileRequest;
+use App\Services\ImageService;
 
 class RoomImagesController extends Controller
 {
@@ -37,9 +39,20 @@ class RoomImagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FileRequest $request)
     {
-        //
+        if(count($request->messages()) > 0)
+        {
+            return Response::json('error',400);
+        }
+        else
+        {
+            $uploadSuccess = ImageService::upload($request->file);
+            if($uploadSuccess != false)
+            {
+                //uploaded, save this to db. 
+            }
+        }
     }
 
     /**
