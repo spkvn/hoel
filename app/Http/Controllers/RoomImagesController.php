@@ -39,7 +39,7 @@ class RoomImagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FileRequest $request)
+    public function store(Room $room, FileRequest $request)
     {
         if(count($request->messages()) > 0)
         {
@@ -47,10 +47,14 @@ class RoomImagesController extends Controller
         }
         else
         {
-            $uploadSuccess = ImageService::upload($request->file);
+            $uploadSuccess = ImageService::upload($request,$room->id);
             if($uploadSuccess != false)
             {
-                //uploaded, save this to db. 
+                //uploaded &  saved successfull
+                $images = $room->images()->get();
+                return view('admin.roomimages')
+                       ->with('room', $room)
+                       ->with('images', $images);
             }
         }
     }
