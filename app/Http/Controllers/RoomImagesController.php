@@ -52,7 +52,8 @@ class RoomImagesController extends Controller
             {
                 //uploaded &  saved successfull
                 $images = $room->images()->get();
-                return view('admin.roomimages')
+                //not gonna work, it's ajax. redirect in js? 
+                return redirect()->route('admin.roomimages')
                        ->with('room', $room)
                        ->with('images', $images);
             }

@@ -65,7 +65,10 @@ h2 {
 .add_button{
 	
 }
-
+/*Room images*/
+.room-images{
+	width:100%;
+}
 /*Dropzone div*/
 .dropzone
 {

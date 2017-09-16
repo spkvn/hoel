@@ -15,7 +15,7 @@
 		<div class="col-xs-12">
 			@foreach($images as $img)
 				<div class="col-md-4 col-xs-6">
-					<img src="{{$img->path}}" alt="{{$img->alt}}">
+					<img class="room-images" src="{{$img->path}}" alt="{{$img->alt}}">
 					<form action="/admin/room/{{$room->id}}/image/{{$img->id}}/">
 						{{method_field('DELETE')}}
 						{{csrf_field()}}
