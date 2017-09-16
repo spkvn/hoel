@@ -33,7 +33,9 @@
 								<a href="/admin/room/{{$room->id}}">
 									<button class="btn btn-primary">Edit</button>
 								</a>
-
+								<a href="/admin/room/{{$room->id}}/image">
+									<button class="btn btn-primary">Images</button>
+								</a>
 								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$room->id}}">Delete</button>
 								
 								<div class="modal fade" id="deleteModal{{$room->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{$room->name}}" aria-hidden="true">

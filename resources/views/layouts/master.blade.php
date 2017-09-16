@@ -12,7 +12,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 		<!--generic css-->
-		<link href="../css/app.css" rel="stylesheet">
+		<link href="{{URL::asset('css/app.css')}}" rel="stylesheet">
 		<!-- font-awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 	</head>

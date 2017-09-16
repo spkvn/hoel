@@ -74,7 +74,7 @@ class BookingsTableSeeder extends Seeder
             'check_in' => '2018/08/14',
             'check_out'=> '2018/08/16'
         ]);        
-        sDB::table('bookings')->insert([
+        DB::table('bookings')->insert([
             'room_id'  => '4',  
             'user_id'  => '14',  
             'check_in' => '2018/09/14',

@@ -45,6 +45,12 @@ Route::group(['middleware' => 'auth'], function ()
     	Route::post('/room/{room}','RoomController@update');	
     	Route::delete('/room/{room}','RoomController@destroy');
 
+        //Matches "/admin/room/image[s]?"
+        Route::get('room/{room}/image', 'RoomImagesController@index');
+        Route::get('room/{room}/image/create','RoomImagesController@create');
+        Route::post('room/{room}/image','RoomImagesController@store');
+        Route::delete('room/{room}/image/{image}','RoomImagesContoller@destroy');
+
         //Matches the "/admin/card[s]?" URL
         Route::get('/cards','AdminController@cards');
         Route::get('/card/create','CardController@create');
