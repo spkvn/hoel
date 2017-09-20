@@ -78,3 +78,16 @@ h2 {
 	border:3px dashed #AAA;
 	height:80%;
 }
+
+/*Headers add-item box.*/
+.header-add-item-box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size:20pt;
+	height: 8%;
+
+}
+.header-add-item-box:hover{
+	background-color: #AAA; 
+}

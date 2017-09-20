@@ -53,7 +53,7 @@
 											<div class="modal-footer">
 												<form class="form-inline" method="POST" action="/admin/room/{{$room->id}}">
 													<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-													{{method_field('DELETE')}}
+													{{method_field('delete')}}
 													{{csrf_field()}}
 													<input type="submit" class="btn btn-danger" value="Delete">
 												</form>									

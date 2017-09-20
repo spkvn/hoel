@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Room;
+use App\RoomImage;
 use Illuminate\Http\Request;
 use App\Http\Requests\FileRequest;
 use App\Services\ImageService;
@@ -51,57 +52,18 @@ class RoomImagesController extends Controller
             if($uploadSuccess != false)
             {
                 //uploaded &  saved successfull
-                $images = $room->images()->get();
-                //not gonna work, it's ajax. redirect in js? 
-                return redirect()->route('admin.roomimages')
-                       ->with('room', $room)
-                       ->with('images', $images);
+                echo "Success";
+            }
+            else
+            {
+                echo "Failure";
             }
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\c  $c
-     * @return \Illuminate\Http\Response
-     */
-    public function show(c $c)
+    public function destroy(Room $room, RoomImage $image)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\c  $c
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(c $c)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\c  $c
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, c $c)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\c  $c
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(c $c)
-    {
-        //
+        ImageService::delete($image);
+    	return redirect()->route('admin.roomimages',['room' => $room->id]);
     }
 }

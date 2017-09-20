@@ -28,28 +28,29 @@ Route::group(['middleware' => 'auth'], function ()
 	Route::prefix('admin')->group(function () 
 	{
         //Matches The "/admin/user[s]?" URL
-    	Route::get('users', 'AdminController@users');		
-    	Route::get('user/create', 'UserController@create');	
+        Route::get('users', 'AdminController@users');       
+        Route::get('user/create', 'UserController@create'); 
         Route::get('user/{user}', 'UserController@edit');   
         Route::post('user/search', 'UserController@search');
-    	Route::post('user/store', 'UserController@store'); 	
-    	Route::post('user/{user}', 'UserController@update');	
-    	Route::delete('/user/{user}','UserController@destroy');
+        Route::post('user/store', 'UserController@store');  
+        Route::post('user/{user}', 'UserController@update');    
+        Route::delete('/user/{user}','UserController@destroy');
 
-    	//Matches the "/admin/room[s]?" URL
-    	Route::get('/rooms', 'AdminController@rooms');		
-    	Route::get('/room/create', 'RoomController@create');
-    	Route::get('/room/{room}', 'RoomController@edit');	
+        //Matches the "/admin/room[s]?" URL
+        Route::get('/rooms', 'AdminController@rooms');      
+        Route::get('/room/create', 'RoomController@create');
+        Route::get('/room/{room}', 'RoomController@edit');  
         Route::post('/room/search','RoomController@search');
-    	Route::post('/room/store', 'RoomController@store');	
-    	Route::post('/room/{room}','RoomController@update');	
-    	Route::delete('/room/{room}','RoomController@destroy');
+        Route::post('/room/store', 'RoomController@store'); 
+        Route::post('/room/{room}','RoomController@update');    
+        Route::delete('/room/{room}','RoomController@destroy');
 
         //Matches "/admin/room/{room}/image[s]?"
-        Route::get('room/{room}/image', 'RoomImagesController@index')->name('admin.roomimages');
+        Route::get('room/{room}/image', 'RoomImagesController@index')
+             ->name('admin.roomimages');
         Route::get('room/{room}/image/create','RoomImagesController@create');
         Route::post('room/{room}/image','RoomImagesController@store');
-        Route::delete('room/{room}/image/{image}','RoomImagesContoller@destroy');
+        Route::delete('/room/{room}/image/{image}', 'RoomImagesController@destroy');
 
         //Matches the "/admin/card[s]?" URL
         Route::get('/cards','AdminController@cards');

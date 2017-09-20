@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\SearchService;
+use App\Services\ImageService;
+use App\RoomImage as RoomImage;
 use App\Room as Room;
 
 class RoomController extends Controller
@@ -62,6 +64,11 @@ class RoomController extends Controller
 
     public function destroy(Room $room)
     {
+        $roomImages = $room->images();
+        foreach($roomImages as $roomImage)
+        {
+            RoomImage::delete($roomImage);
+        }
     	$room->delete();
     	$rooms = Room::all();
     	return view('admin.rooms',compact('rooms'));

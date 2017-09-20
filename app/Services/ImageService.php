@@ -21,4 +21,16 @@ class ImageService
 		]);
 		return $success;
 	}
+
+	public static function delete(RoomImage $image)
+	{
+		if(unlink(public_path().$image->path))
+		{
+			$image->delete();
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
 }

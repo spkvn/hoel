@@ -1,5 +1,6 @@
 @section('content')
 @extends('layouts.master')
+	<script type="text/javascript" src="{{URL::asset('js/dropzone.js')}}"></script>
 	<div class="row">
 		<div class="col-xs-12">
 			<h1>Add image to {{$room->room_number}}</h1>
@@ -14,5 +15,4 @@
 		</div>
 		@include('layouts.errors')
 	</div>
-	<script type="text/javascript" src="{{URL::asset('js/dropzone.js')}}"></script>
 @endsection
