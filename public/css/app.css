@@ -91,3 +91,22 @@ h2 {
 .header-add-item-box:hover{
 	background-color: #AAA; 
 }
+
+
+/*room image page*/
+.room-image-body-left,.room-image-body-right{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  height:84%;
+  border-top:2px solid #aaa;
+}
+.room-image-body-left{
+  border-right:2px solid #aaa;
+}
+.room-image-grid-item{
+  border:2px dashed #aaa;
+  height:400px;
+  overflow-x:hide;
+  overflow-y:scroll;
+}

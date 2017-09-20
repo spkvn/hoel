@@ -14,7 +14,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			@foreach($images as $img)
-				<div class="col-md-4 col-xs-6">
+				<div class="col-md-4 col-xs-6 room-image-grid-item">
 					<img class="room-images" src="{{$img->path}}" alt="{{$img->alt}}">
 					<form 
 					action="/admin/room/{{$room->id}}/image/{{$img->id}}"
@@ -36,10 +36,10 @@
 	</div>
 	@else
 	<div class="row">
-		<div class="col-xs-4">
-			<h2>Room {{$room->room_number}} has no images.</h2>
+		<div class="col-xs-4 room-image-body-left">
+			<p>Room {{$room->room_number}} has no images.</p>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-8 room-image-body-right">
 			<p>
 				<a href="/admin/room/{{$room->id}}/image/create">
 					<i class="fa fa-picture-o" aria-hidden="true"> Add Image</i>
