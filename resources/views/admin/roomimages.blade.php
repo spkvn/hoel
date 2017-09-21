@@ -23,13 +23,6 @@
 						{{ csrf_field() }}
 					    <input class="btn btn-danger" type="submit" value="Delete">
                 	</form>
-
-					<!-- form method="POST"
-						  action="/admin/room/{{$room->id}}/image/{{$img->id}}" >
-						{{method_field('delete')}}
-						{{csrf_field()}}
-						<input class="btn btn-danger" type="submit" value="Delete">
-					</form> -->
 				</div>
 			@endforeach
 		</div>
