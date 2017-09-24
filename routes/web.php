@@ -74,7 +74,8 @@ Route::group(['middleware' => 'auth'], function ()
     {
         Route::get('booking/past', 'BookingController@PastBookings');
         Route::get('booking/create', 'BookingController@PatronCreate');
+        Route::get('booking/{room}/{user}/{check_in}', 'BookingController@PatronEdit');
+        Route::post('booking/{room}/{user}/{check_in}', 'BookingController@PatronUpdate');
         Route::post('booking/store', 'BookingController@PatronStore');
-        Route::get('booking/{booking}', 'BookingController@PatronEdit');
     });
 });

@@ -170,4 +170,46 @@ class BookingController extends Controller
                 .$CI->toDateString());
         }   
     }
+
+    public function PatronEdit($room_id, $user_id, $check_in)
+    {
+        $booking = BookingService::SimpleFindBooking($room_id,$user_id,$check_in);
+        return view('patron.booking.edit')->with('booking',$booking);
+    }
+
+    public function PatronUpdate()
+    {
+        $room = Room::where('room_number','=',request('room_number'))
+                    ->first();
+        $CI = Carbon::createFromFormat('Y-m-d',request('check_in'));
+        $CO = Carbon::createFromFormat('Y-m-d',request('check_out'));
+
+        /*Old Vars*/
+        $origRoom_id = request('origRoom_id');
+        $origUser_id = request('origUser_id');
+        $origCheck_in = request('origCheck_in');
+
+        $booking = BookingService::SimpleFindBooking($origRoom_id,$origUser_id,$origCheck_in);
+
+        if(BookingService::CheckAvailable($room, $CI,$CO))
+        {
+            //can't '$booking->save' due to composite keys
+            //so delete and re-create instead.
+            BookingService::delete($origRoom_id,$origUser_id,$origCheck_in);
+
+            Booking::create([
+                'user_id' => $origUser_id,
+                'room_id' => $room->id,
+                'check_in'=> $CI->toDateTimeString(),
+                'check_out'=> $CO->toDateTimeString(),
+            ]);
+
+            return redirect('dashboard');
+        }
+        else
+        {
+            return redirect('patron/booking/'.$origRoom_id.'/'.$origUser_id.'/'.$origCheck_in)
+                   ->withErrors('Room unavailable at '.$CI->toDateString());
+        }
+    }
 }
