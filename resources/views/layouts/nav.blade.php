@@ -80,9 +80,9 @@
 		@endif
 
 		@if($user->category == "Patron")
-		<a href="">
+		<a href="/dashboard">
 			<button class="btn btn-default navbar-btn">
-				[To Be Completed]Your Bookings
+				Your Bookings
 			</button>
 		</a>
 		<a href="">
