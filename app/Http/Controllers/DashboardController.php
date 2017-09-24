@@ -56,7 +56,6 @@ class DashboardController extends Controller
     	$user 	  = Auth::User();
     	$currentBooking = PatronService::GetCurrentBooking($user);
     	$futureBookings = PatronService::GetFutureBookings($user);
-        dd("Future Bookings: ",$futureBookings);
     	return view('dash.patron')
     		   ->with('currentBooking', $currentBooking)
     		   ->with('futureBookings', $futureBookings);
