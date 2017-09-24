@@ -135,7 +135,6 @@ class BookingController extends Controller
             $pastBookings = auth()->user()
                                   ->bookings()
                                   ->where('check_out', '<' , date('Y/m/d'));
-            dd($pastBookings->get());
             return view('patron.booking.past')->with('pastBookings',$pastBookings->get());
         }
     }
