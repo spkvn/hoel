@@ -73,5 +73,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::prefix('patron')->group(function ()
     {
         Route::get('booking/past', 'BookingController@PastBookings');
+        Route::get('booking/create', 'BookingController@PatronCreate');
+        Route::post('booking/store', 'BookingController@PatronStore');
+        Route::get('booking/{booking}', 'BookingController@PatronEdit');
     });
 });

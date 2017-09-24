@@ -9,6 +9,7 @@ use App\Booking;
 use App\Services\BookingService;
 use App\Services\SearchService;
 use App\Http\Requests\BookingRequest;
+use App\Http\Requests\PatronBookingRequest;
 use Carbon\Carbon;
 
 class BookingController extends Controller
@@ -18,7 +19,7 @@ class BookingController extends Controller
         $this->SearchService = new SearchService();
     }
 
-    /*TODO Fix search for bookings. Composite keys are shitty
+    /*TODO Fix search for bookings. Composite keys are tough
     public function search()
     {
         $bookings = $this->SearchService->BookingSearch(request('search_term'));
@@ -137,5 +138,36 @@ class BookingController extends Controller
                                   ->where('check_out', '<' , date('Y/m/d'));
             return view('patron.booking.past')->with('pastBookings',$pastBookings->get());
         }
+    }
+
+    public function PatronCreate()
+    {
+        return view('patron.booking.create');
+    }
+
+    public function PatronStore(PatronBookingRequest $bookingReq)
+    {
+        $room = Room::where('room_number','=',request('room_number'))
+                        ->first();
+
+        $CI = Carbon::createFromFormat('d/m/Y|',request('check_in'));
+        $CO = Carbon::createFromFormat('d/m/Y|',request('check_out'));
+
+        if(BookingService::CheckAvailable($room, $CI,$CO))
+        {
+            $dd=Booking::create([
+                'room_id' => $room->id,
+                'user_id' => auth()->user()->id,
+                'check_in' => $CI->toDateTimeString(),
+                'check_out' => $CO->toDateTimeString()
+            ]);
+            $dd->save();
+            return redirect('/dashboard');
+        }           
+        else
+        {
+            return redirect('patron/booking/create')->withErrors('Room unavailable at '
+                .$CI->toDateString());
+        }   
     }
 }
