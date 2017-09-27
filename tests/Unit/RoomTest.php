@@ -11,7 +11,11 @@ use App\Room;
 class RoomTest extends TestCase
 {
 	private $room; 
-	public function __construct()
+	
+	//set up runs before each test.
+	//This means if we modify some data in a test,
+	//it will be re-initalized in this method.
+	public function setUp()
 	{
 		$this->room = new Room();
 		$this->room->id = "999";
@@ -19,6 +23,16 @@ class RoomTest extends TestCase
 		$this->room->beds = 1;
 		$this->room->max_capacity = 2;
 		$this->room->price_per_night = 400;
+	}
+
+	public function testHasMaxCapacity()
+	{
+		$this->assertEquals(2,$this->room->max_capacity);
+	}
+
+	public function testHasPricePerNight()
+	{
+		$this->assertEquals(400,$this->room->price_per_night);
 	}
 
     public function testHasRoomNumber()
