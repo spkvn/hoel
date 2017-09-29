@@ -51,4 +51,13 @@ class BookingTest extends TestCase
     	$this->assertEquals($room->id, $this->rooms[0]->id);
     }
 
+    public function testCost()
+    {
+    	$this->booking0->room->price_per_night = 20;
+    	//four nights;
+    	$this->booking0->check_in  = '2017-09-01';
+    	$this->booking0->check_out = '2017-09-05';
+
+    	$this->assertEquals(20*4,$this->booking0->cost());
+    }
 }
