@@ -40,3 +40,10 @@ $factory->define(App\Booking::class, function(Faker\Generator $faker){
 		'check_out'=> $faker->date('Y-m-d','tomorrow')
 	];
 });
+
+$factory->define(App\Card::class, function (Faker\Generator $faker){
+    return[
+        'access'  => $faker->randomNumber(),
+        'user_id' => $faker->randomNumber()
+    ];
+});
