@@ -1,6 +1,9 @@
 @section('content')
 @extends('layouts.master')
-	<h1>Create New Booking</h1>
+	<h1>Edit Booking</h1>
+	<p>
+		Edit {{$booking->user->name}}'s booking in room {{$booking->room->room_number}} for {{$booking->check_in}}
+	</p>
 	<form method="POST" action="/admin/booking/{{$booking->room->id}}/{{$booking->user->id}}/{{$booking->check_in}}">
 		{{csrf_field()}}
 		<input type="hidden" name="origRoom_id" value="{{ $booking->room->id }}">

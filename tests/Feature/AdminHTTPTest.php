@@ -25,18 +25,16 @@ class AdminHTTPTest extends TestCase
     public function testGetDashboard()
     {
         $response = $this->actingAs($this->user)
-        		 		 ->get('/');
-
-        $response->assertRedirect('/dashboard');
+        		 		 ->get('/')
+        		 		 ->assertRedirect('/dashboard');
     }
 
     public function testGetUsers()
     {
         $response = $this->actingAs($this->user)
-        		 		 ->get('/admin/users');
-
-        $response->assertStatus(200)
-        		 ->assertSee("User Management");
+        		 		 ->get('/admin/users')
+        		 		 ->assertStatus(200)
+        		 		 ->assertSee("User Management");
     }    
     
     public function testGetUserEdit()
@@ -46,29 +44,25 @@ class AdminHTTPTest extends TestCase
 
     	//access the user's page
         $response = $this->actingAs($this->user)
-        		 		 ->get('/admin/user/'.$user->id);
-
-        //see if it works
-        $response->assertStatus(200)
-        		 ->assertSee("Edit User ".$user->name);
+        		 		 ->get('/admin/user/'.$user->id)
+        		 		 ->assertStatus(200)
+        		 		 ->assertSee("Edit User ".$user->name);
     }
 
     public function testGetUserCreate()
     {
     	$response = $this->actingAs($this->user)
-    					 ->get('/admin/user/create');
-
-    	$response->assertStatus(200)
-    			 ->assertSee('Create New User');
+    					 ->get('/admin/user/create')
+    					 ->assertStatus(200)
+    			 		 ->assertSee('Create New User');
     }
 
     public function testGetRooms()
     {
     	$response = $this->actingAs($this->user)
-    				  	 ->get('/admin/rooms');
-    				  	 
-    	$response->assertStatus(200)
-    			 ->assertSee('Room Management')	;
+    				  	 ->get('/admin/rooms')
+    				  	 ->assertStatus(200)
+    			 		 ->assertSee('Room Management')	;
     }
 
     public function testGetRoomEdit()
@@ -76,9 +70,42 @@ class AdminHTTPTest extends TestCase
     	//find room;
     	$room = Room::find('1');
 
+    	//get room edit page
     	$response = $this->actingAs($this->user)
-    					 ->get('/admin/room/'.$room->id);
-    	$response->assertStatus(200)
-    			 ->assertSee('Edit Room '.$room->room_number);
+    					 ->get('/admin/room/'.$room->id)
+    					 ->assertStatus(200)
+    			 		 ->assertSee('Edit Room '.$room->room_number);
+    }
+    public function testGetRoomCreate()
+    {
+    	$response = $this->actingAs($this->user)
+    					 ->get('/admin/room/create')
+    					 ->assertStatus(200)
+    			 		 ->assertSee('Create New Room');
+    }
+
+    public function testGetBookings()
+    {
+    	$response = $this->actingAs($this->user)
+    					 ->get('/admin/bookings')
+    					 ->assertStatus(200)
+    					 ->assertSee('Booking Management');
+    }
+
+    public function testGetBookingCreate()
+    {
+    	$response = $this->actingAs($this->user)
+    					 ->get('/admin/booking/create')
+    					 ->assertStatus(200)
+    					 ->assertSee('Create New Booking');
+    }
+
+    public function testGetBookingEdit()
+    {
+    	$booking = Booking::all()->first();
+    	$response = $this->actingAs($this->user)
+    					 ->get('/admin/booking/'.$booking->room->id."/".$booking->user->id."/".$booking->check_in)
+    					 ->assertStatus(200)
+    					 ->assertSee('Edit Booking');
     }
 }
