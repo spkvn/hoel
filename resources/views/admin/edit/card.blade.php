@@ -1,6 +1,9 @@
 @section('content')
 @extends('layouts.master')
 	<h1>Edit Card {{$card->id}}</h1>
+	<p>
+		Edit Card {{$card->id}}, issued to {{$card->user->name}} to access room: {{$card->room->room_number}}
+	</p>
 	<form method="POST" action="/admin/card/{{$card->id}}">
 		{{csrf_field()}}
 		<div class="form-group">

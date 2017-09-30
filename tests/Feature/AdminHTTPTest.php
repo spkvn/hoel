@@ -108,4 +108,29 @@ class AdminHTTPTest extends TestCase
     					 ->assertStatus(200)
     					 ->assertSee('Edit Booking');
     }
+
+    public function testGetCards()
+    {
+    	$response = $this->actingAs($this->user)
+    					 ->get('/admin/cards')
+    					 ->assertStatus(200)
+    					 ->assertSee('Access Card Management');
+    }
+
+    public function testGetCardCreate()
+    {
+    	$response = $this->actingAs($this->user)
+    					 ->get('/admin/card/create')
+    					 ->assertStatus(200)
+    					 ->assertSee('Create New Card');
+    }
+
+    public function testGetCardEdit()
+    {
+    	$card = Card::all()->first();
+    	$response = $this->actingAs($this->user)
+    					 ->get('/admin/card/'.$card->id)
+    					 ->assertStatus(200)
+    					 ->assertSee('Edit Card '.$card->id);
+    }
 }
