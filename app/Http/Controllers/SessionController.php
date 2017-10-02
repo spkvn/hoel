@@ -33,31 +33,4 @@ class SessionController extends Controller
     	auth()->logout();
     	return redirect('/');
     }
-
-    /*private function getUserView()
-    {
-    	$user = User::find(auth()->id());
-    	switch ($user->category) 
-    	{
-    		case 'Administrator':
-    			return 'admin.index';
-    			break;
-
-    		case 'Reception':
-    			return 'recep.index';
-    			break;
-
-    		case 'Patron':
-    			return 'patron.index';
-    			break;
-
-    		case 'Housekeeping':
-    			return 'housekeep.index';
-    			break;
-    		
-    		default:
-    			return 'patron.index';
-    			break;
-    	}
-    }*/
 }
