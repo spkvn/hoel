@@ -1,11 +1,15 @@
 @section('content')
 @extends('layouts.master')
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-12">
 			<h1>User Management</h1>
 		</div>
-		<div class="col-xs-8">
-			<a href="/admin/user/create"><button class="btn btn-default" style="float:right;">Add User</button></a>
+		<div class="col-xs-12">
+			<a href="/admin/user/create">
+				<button class="btn btn-default" style="float:right;">
+					Add User
+				</button>
+			</a>
 		</div>
 	</div>
 	@include('admin.search.usersearch')
@@ -27,10 +31,10 @@
 							<td>{{$user->email}}</td>
 							<td>
 								<a href="/admin/user/{{$user->id}}">
-									<button class="btn btn-primary">Edit</button>
+									<button id="editUser{{$user->id}}"class="btn btn-primary">Edit</button>
 								</a>
 
-								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$user->id}}">Delete</button>
+								<button type="button" id="deleteUser{{$user->id}}" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$user->id}}">Delete</button>
 								
 								<div class="modal fade" id="deleteModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{$user->name}}" aria-hidden="true">
 									<div class="modal-dialog" role="document">
@@ -46,10 +50,10 @@
 											</div>
 											<div class="modal-footer">
 												<form class="form-inline" method="POST" action="/admin/user/{{$user->id}}">
-													<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+													<button  type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													{{method_field('DELETE')}}
 													{{csrf_field()}}
-													<input type="submit" class="btn btn-danger" value="Delete">
+													<input id="delButton{{$user->id}}" type="submit" class="btn btn-danger" value="Delete">
 												</form>									
 											</div>
 										</div>
