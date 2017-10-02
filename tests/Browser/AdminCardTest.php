@@ -37,7 +37,7 @@ class AdminCardTest extends DuskTestCase
         });
     }
 
-    public function testAdminRoomCreate()
+    public function testAdminCardCreate()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
@@ -53,7 +53,7 @@ class AdminCardTest extends DuskTestCase
         });
     }
     
-    public function testAdminRoomEdit()
+    public function testAdminCardEdit()
     {
         $this->browse(function (Browser $browser){
             //Needs to -1 the room id for some reason, somehow increments between tests?
@@ -62,7 +62,7 @@ class AdminCardTest extends DuskTestCase
                               ->firstOrFail();
 
             //update class members to new objects
-            $this->room = Room::where('id', '=', '3')->first();
+            $this->room = Room::where('id', '=', '10')->first();
             $patrons = User::where('category','=','Patron')->get();
             //pick not the first patron
             $this->patron = $patrons[1];
@@ -77,10 +77,10 @@ class AdminCardTest extends DuskTestCase
         });
     }
 
-    public function testAdminRoomDelete()
+    public function testAdminCardDelete()
     {
         $this->browse(function (Browser $browser) {
-            $this->room = Room::where('id', '=', '3')->first();
+            $this->room = Room::where('id', '=', '10')->first();
             $patrons = User::where('category','=','Patron')->get();
             $this->patron = $patrons[1];
 
