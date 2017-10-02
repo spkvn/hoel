@@ -74,4 +74,8 @@ class AdminUserTest extends DuskTestCase
         });
     }
 
+    public function __destruct()
+    {
+        $this->user->delete();
+    }
 }
