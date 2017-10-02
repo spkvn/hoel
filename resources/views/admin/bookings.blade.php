@@ -1,13 +1,16 @@
 @section('content')
 @extends('layouts.master')
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-12">
 			<h1>Booking Management</h1>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-12">
 			<a class="add_button" href="/admin/booking/create">
-				<i class="fa fa-book" aria-hidden="true"></i>
-				Add Booking
+				<button class="btn btn-default" style="float:right;margin-top:2%;">
+					Add Booking
+				</button>
+				{{-- <i class="fa fa-book" aria-hidden="true"></i>
+				Add Booking --}}
 			</a>
 		</div>
 	</div>
@@ -38,7 +41,9 @@
 							<td>${{$booking->cost()}}</td>
 							<td>
 								<a href="/admin/booking/{{$booking->room_id}}/{{$booking->user_id}}/{{$booking->check_in}}">
-									<button class="btn btn-primary">Edit</button>
+									<button 
+										id="editBooking{{$booking->room_id}}{{$booking->user_id}}{{$booking->check_in}}" 
+										class="btn btn-primary">Edit</button>
 								</a>
 
 								<button type="button" class="btn btn-danger" data-toggle="modal" 
@@ -63,7 +68,8 @@
 													<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													{{method_field('DELETE')}}
 													{{csrf_field()}}
-													<input type="submit" class="btn btn-danger" value="Delete">
+													<input id="deleteBooking{{$booking->room_id}}{{$booking->user_id}}{{$booking->check_in}}" 
+													type="submit" class="btn btn-danger" value="Delete">
 												</form>									
 											</div>
 										</div>
