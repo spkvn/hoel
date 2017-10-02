@@ -56,12 +56,13 @@ class AdminCardTest extends DuskTestCase
     public function testAdminRoomEdit()
     {
         $this->browse(function (Browser $browser){
-            // dd($this->room->id,$this->patron->id);
+            //Needs to -1 the room id for some reason, somehow increments between tests?
             $this->card = Card::where('access' , '=', $this->room->id-1)
                               ->where('user_id', '=', $this->patron->id)
                               ->firstOrFail();
+
             //update class members to new objects
-            $this->room = Room::find(3)->first();
+            $this->room = Room::where('id', '=', '3')->first();
             $patrons = User::where('category','=','Patron')->get();
             //pick not the first patron
             $this->patron = $patrons[1];
@@ -79,8 +80,7 @@ class AdminCardTest extends DuskTestCase
     public function testAdminRoomDelete()
     {
         $this->browse(function (Browser $browser) {
-
-            $this->room = Room::find(3)->first();
+            $this->room = Room::where('id', '=', '3')->first();
             $patrons = User::where('category','=','Patron')->get();
             $this->patron = $patrons[1];
 
