@@ -178,11 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //debugbar
-        Barryvdh\Debugbar\ServiceProvider::class,
-
-        //dusk testing
-        Laravel\Dusk\DuskServiceProvider::class
-
+        Barryvdh\Debugbar\ServiceProvider::class
     ],
 
     /*
