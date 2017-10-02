@@ -1,10 +1,10 @@
 @section('content')
 @extends('layouts.master')
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-12">
 			<h1>Room Management</h1>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-12">
 			<a href="/admin/room/create"><button class="btn btn-default" style="float:right;">Add Room</button></a>
 		</div>
 	</div>
@@ -31,12 +31,12 @@
 							<td>${{$room->price_per_night}}</td>
 							<td>
 								<a href="/admin/room/{{$room->id}}">
-									<button class="btn btn-primary">Edit</button>
+									<button id="editRoom{{$room->id}}" class="btn btn-primary">Edit</button>
 								</a>
 								<a href="/admin/room/{{$room->id}}/image">
 									<button class="btn btn-primary">Images</button>
 								</a>
-								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$room->id}}">Delete</button>
+								<button type="button" id="deleteRoom{{$room->id}}" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$room->id}}">Delete</button>
 								
 								<div class="modal fade" id="deleteModal{{$room->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{$room->name}}" aria-hidden="true">
 									<div class="modal-dialog" role="document">
@@ -55,7 +55,7 @@
 													<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													{{method_field('delete')}}
 													{{csrf_field()}}
-													<input type="submit" class="btn btn-danger" value="Delete">
+													<input id="delButton{{$room->id}}" type="submit" class="btn btn-danger" value="Delete">
 												</form>									
 											</div>
 										</div>

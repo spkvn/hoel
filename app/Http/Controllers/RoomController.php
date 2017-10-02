@@ -42,9 +42,9 @@ class RoomController extends Controller
         {
         	$room->room_number = request('room_number');
         }
-        if(request('bed') != null)
+        if(request('beds') != null)
         {
-        	$room->beds = request('bed');
+        	$room->beds = request('beds');
         }
         if(request('max_capacity') != null)
         {
