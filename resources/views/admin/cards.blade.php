@@ -2,10 +2,10 @@
 @extends('layouts.master')
 	<link href="{{URL::asset('css/k_table.css')}}" type="text/css" rel="stylesheet">
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-12">
 			<h1>Access Card Management</h1>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-12">
 			<a href="/admin/card/create">
 				<button class="btn btn-default" style="float:right;margin-top:2%;">
 					Add Card
@@ -46,11 +46,12 @@
 	    			@endif
 	    			<td>
 	    				<a href="/admin/card/{{$card->id}}">
-	    					<button class="btn btn-primary">Edit</button>
+	    					<button id="editCard{{$card->id}}" class="btn btn-primary">Edit</button>
 	    				</a>
 
 
-						<button type="button" class="btn btn-danger" data-toggle="modal" 
+						<button type="button" id="deleteCard{{$card->id}}" 
+								class="btn btn-danger" data-toggle="modal" 
 								data-target="#deleteModal{{$card->id}}">
 								Delete
 						</button>
@@ -72,10 +73,14 @@
 									</div>
 									<div class="modal-footer">
 										<form class="form-inline" method="POST" action="/admin/card/{{$card->id}}">
-											<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary" 
+													data-dismiss="modal">
+												Close
+											</button>
 											{{method_field('DELETE')}}
 											{{csrf_field()}}
-											<input type="submit" class="btn btn-danger" value="Delete">
+											<input  type="submit" id="delButton{{$card->id}}" 
+													class="btn btn-danger" value="Delete">
 										</form>									
 									</div>
 								</div>

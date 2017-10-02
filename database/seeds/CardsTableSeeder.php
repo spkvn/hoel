@@ -11,14 +11,14 @@ class CardsTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('cards')->insert([
-        	'access'  => '1',	
-        	'user_id'  => '4',	
-        ]);
+        //  DB::table('cards')->insert([
+        // 	'access'  => '1',	
+        // 	'user_id'  => '4',	
+        // ]);
 
         DB::table('cards')->insert([
         	'access'  => '2',	
-        	'user_id'  => '5',
+        	'user_id'  => '8',
         ]);
 
         DB::table('cards')->insert([

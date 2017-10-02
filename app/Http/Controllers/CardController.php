@@ -21,12 +21,12 @@ class CardController extends Controller
             'email' => 'required|email'
     	]);
 
-    	$user = User::where('email', '=', request('email'))
+    	$user = User::where('email', 'like', request('email'))
     				->where('category' , '=', 'Patron')
-    				->first();
+    				->firstOrFail();
 	
     	$room = Room::where('room_number','=', request('room_number'))
-    				->first();
+    				->firstOrFail();
 
 		$card = Card::create([
     		'access' => $room->id,
