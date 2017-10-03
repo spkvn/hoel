@@ -57,7 +57,7 @@
 		margin-top:2%;
 	}
 	.expungeHeader{
-		background:lightgray;
+		background:#AAAAAA;
 		color:black;
 	}
 	.linkicon{
@@ -72,7 +72,7 @@
 	}
 </style>
 <body>
-	<div class="container">
+	<div class="container" style="background:#dddddd;">
 		<div class="row">
 			<div class="col-xs-12" id="headerCol">
 				<h1>Development Project 1</h1>
@@ -228,11 +228,17 @@ class AdminUserTest extends DuskTestCase
 						Since this is a one-person project the benefits of the feature-branch workflow are not substantial. One major improvement I have found is using git as a deployment tool for the project. When I complete some work locally, I normally would connect to the remote server via FTP, and transfer the files manually. This is a slow and bandwidth heavy operation, and almost inveitably, causes problems with file permissions.
 					</p>
 					<p>
-						Git has simplified the deployment process. I have cloned the project into my server's web root directory, and after the inital cloning, it takes only a short amount of time for me to pull new changes, and have the changes on the live site immediately. Since Git only pulls changes, rather than entire files, it's quick and lower bandwidth requirements. 
+						Git has simplified the deployment process. I have cloned the project into my server's web root directory, and after the inital cloning, it takes only a short amount of time for me to pull new changes, and have the changes on the live site immediately. Since Git only pulls changes, rather than entire files, it's quick and has lower bandwidth requirements. 
 					</p>
 					<div class="col-xs-12"  style="display:flex; justify-content: center;">
 						<img src="img/git_pull.png" alt="git pull">
 					</div>
+				</div>
+				<div class="col-xs-12">
+					<h2 class="expungeHeader">Conclusion</h2>
+					<p class="expunging">
+						The tools I've learned to use will not only help me become more professional, but allow me to create more robust and higher quality software. I plan to try to introduce the Dusk Browser testing features I've learned about in this unit to my workplace. Occasionally I'm tasked with manually testing the applications we create before a version is demonstrated to a customer which is very tedious & slow work. Hopefully the tools will allow me to reduce the workload. 
+					</p>
 				</div>
 			</div>
 		</div>
