@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="">
+<head>
+<title>VHOM.ORG [Kevin's Projects]</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--WARNING: Respond.js doesn't work if you view the
+	page via file:// -->
+<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+<![endif]-->
+<style>
+	html{
+		color:white;
+	}
+
+	#headerCol{
+		background:#18B800;
+		color:white;
+	}
+	h1,h2{
+		background:#18B800;
+		color:white;
+		font-size:20pt;
+	}
+	#org,#vhomTitle{
+		display:inline;
+	}
+	#whiteBox{
+		background: white;
+		color:#18B800;
+	}
+	h3{
+		font-size:16pt;
+	}
+	#vhomImg{
+		float:right;
+		width:75%;
+	}
+
+	a:link{
+		color:lightgray;
+	}
+	a:visited{
+		color:gray;
+	}
+	a:hover{
+		text-decoration:underline;
+		font-weight:bold;
+		color:black;
+	}
+	.expunging{
+		margin-top:2%;
+	}
+	.expungeHeader{
+		background:lightgray;
+		color:black;
+	}
+	.linkicon{
+		width:16px;
+		height:16px;
+	}
+	.linkdiv{
+		display:flex;
+		flex-direction:column;
+		align-content: center;
+		justify-content:center;
+	}
+</style>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12" id="headerCol">
+				<h1>Development Project 1</h1>
+				<h2 style="font-size:12pt;">
+				7672551 - Kevin Meagher</h2>
+			</div>
+			<div class="col-xs-12">
+				<p class="expunging">
+					Development Project One has prepared us to use professional tools and practices in our own projects and the workplace. To demonstrate the knowledge and skills I have gained from the unit, I have decided to improve an existing project using testing tools we have learnt about and the Git Version control system.  
+				</p>
+				<h2 class="expungeHeader">
+					Plan Outline
+				</h2>
+				<p class="expunging">
+					My project was initally something I've started outside of university, to allow me to learn and practice using the Laravel PHP Framework.
+				</p>
+				<p class="expunging">
+					It is a basic CRUD (Create, Read, Update, Delete) type of application which models a hotel and it's functions. It stores information on users, rooms, access cards, and bookings in a database, and allows users to sign in and based upon the role of the user (Administrator, Patron, Reception, Housekeeping) interact with the records.
+				</p>
+				<p class="expunging">
+					I wanted to implement the Feature-Branch version control workflow, and introduce unit & integration testing to check that new features do not break existing ones. 
+				</p>
+			</div>
+			<div class="col-xs-12">
+				<p>The project is accessible at the locations below</p>
+				<div class="col-xs-6 linkdiv">
+					<img class="linkicon"src="http://icons.duckduckgo.com/ip2/github.com.ico" alt="github.com icon">
+					<a href="https://github.com/spkvn/hoel">Github</a>
+				</div>
+				<div class="col-xs-6 linkdiv" style="">
+					<img class="linkicon" src="img/hotelicon.jpg" alt="github.com icon">
+					<a href="http://hoel.vhom.org">Site</a>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<h2 class="expungeHeader">
+					Unit and Integration Testing
+				</h2>
+				<p class="expunging">
+					Since the project is Laravel PHP Framework project, it comes with certain testing features out-of-the-box, like PHPUnit. I initially thought that I would be able to write all the tests I needed using PHPUnit, but I also made use of Laravel's Dusk testing framework. 
+				</p>
+				<p class="expunging">
+					PHPUnit gave me the tools required to test the functions of my classes. This was helpful in that I was able to write tests for my classes and their functions, but due to the nature of Laravel projects, object I created did not have a lot of functionality. Mainly, I tested accessing the class properties and querying for related objects.
+				</p>
+				<p class="expunging">
+					Before starting this project I didn't have any idea how to correctly test a web application, as so much of it is dependant on what happens in the browser. Laravel's Dusk framework along with the Chrome WebDriver software gave me the tools to interact programmatically with the web page and test the features I had created.
+				</p>
+				<h3>
+					Unit Testing with PHPUnit
+				</h3>
+				<p class="expunging">
+					Below is an example of a Unit test written with PHPUnit tools. Note how really I'm only testing class accessors and relationships. As these are Object-Relation Mapping classes, there isn't a lot to test there. 
+				</p>
+				<pre>
+class UserTest extends TestCase
+{
+	private $room; 
+
+	//set up runs before each test.
+	//This means if we modify some data in a test,
+	//it will be re-initalized in this method.
+	public function setUp()
+	{
+		$this->user = new User();
+		$this->user->id = "999";
+		$this->user->name = "name";
+		$this->user->email = "email@w.com";
+		$this->user->password = "password";
+		$this->user->category = "patron";
+	}
+
+	public function testHasName()
+	{
+		$this->assertEquals("name",$this->user->name);
+	}
+
+	public function testBookingRelationship()
+	{
+		$this->assertEquals(
+			[$this->user->id , $this->room->id],
+			[$this->user->bookings->first()->user_id, $this->user->bookings->first()->room_id]
+		);
+	}
+	/*More Testing*/
+}
+				</pre>
+				<h3>
+					Integration Testing with Dusk Browser Tests
+				</h3>
+				<p class="expunging">
+					Below is an example of one of the tests written. The browser class provides you with tools to make HTTP requests, interact with elements on the page, clicking buttons and links, entering form data, and asserting data on the resulting page
+				</p>
+				<pre class="code">
+class AdminUserTest extends DuskTestCase
+{
+    private $user; 
+    // using constructor over setUp because I only want one user
+    public function __construct()
+    {
+        parent::setUp();
+        $this->user = factory(User::class)->create(['category'=>'Administrator']);
+    }
+
+    public function testAdminLogin()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                    ->type('email',$this->user->email)
+                    ->type('password','secret')
+                    ->press('Sign In')
+                    ->assertSee('Administrator dashboard');
+        });
+    }
+
+    public function testAdminUserCreate()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                    ->press('Users')
+                    ->assertSee('User Management')
+                    ->press('Add User')
+                    ->assertSee('Create New User')
+                    ->type('name', 'Kevin')
+                    ->type('email','Kevin@kevin.com')
+                    ->type('password','secret')
+                    ->type('password_confirmation','secret')
+                    ->select('category','Patron')
+                    ->press('Submit')
+                    // will be redirected back to user management page on success
+                    // so we can check if the new user is there
+                    ->assertSee('Kevin@kevin.com');
+        });
+    }
+	/*More Tests*/
+}
+				</pre>
+				<p class="expunging">
+					See below for a full run-through of my testing script, which inserts data into the database, runs through PHPUnit unit tests, then Laravel Dusk's browser integration testing
+				</p>
+				<div class="vidcontain col-xs-12"
+					 style="display:flex; justify-content: center;">
+					<iframe width="640" height="360" 
+					src="https://www.youtube.com/embed/w3D6oHRdG4o" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
