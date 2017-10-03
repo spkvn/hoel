@@ -47,7 +47,10 @@
 								</a>
 
 								<button type="button" class="btn btn-danger" data-toggle="modal" 
-								data-target="#deleteModal{{$booking->_room_id.'_'.$booking->user_id}}">Delete</button>
+								id="deleteBooking{{$booking->room_id}}{{$booking->user_id}}{{$booking->check_in}}"
+								data-target="#deleteModal{{$booking->_room_id.'_'.$booking->user_id}}">
+									Delete
+								</button>
 								
 								<div class="modal fade" id="deleteModal{{$booking->_room_id.'_'.$booking->user_id}}" 
 									 tabindex="-1" role="dialog" 
@@ -68,7 +71,7 @@
 													<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													{{method_field('DELETE')}}
 													{{csrf_field()}}
-													<input id="deleteBooking{{$booking->room_id}}{{$booking->user_id}}{{$booking->check_in}}" 
+													<input id="delButton{{$booking->room_id}}{{$booking->user_id}}{{$booking->check_in}}" 
 													type="submit" class="btn btn-danger" value="Delete">
 												</form>									
 											</div>

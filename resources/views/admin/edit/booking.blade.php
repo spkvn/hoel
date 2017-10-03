@@ -18,10 +18,14 @@
 			<input type="email" name="email" id="email" class="form-control" value="{{$booking->user->email}}">
 			<hr/>
 			<label for="check_in">Check In</label> 
-			<input type="date" name="check_in" id="check_in" class="form-control" value="{{$booking->check_in}}">
+			<input type="text" name="check_in" id="check_in" class="form-control" 
+				value="{{date('d/m/Y', time($booking->check_in))}}"
+			>
 			<hr/>
 			<label for="check_out">Check Out</label> 
-			<input type="date" name="check_out" id="check_out" class="form-control" value="{{$booking->check_out}}">
+			<input type="text" name="check_out" id="check_out" class="form-control" 
+				value="{{date('d/m/Y', time($booking->check_out))}}
+				">
 			<hr/>
 		</div>
 		@include('layouts.errors')

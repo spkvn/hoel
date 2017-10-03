@@ -89,11 +89,11 @@ class BookingController extends Controller
         /*New Vars*/
         $user = User::where('email', '=', request('email'))
                         ->where('category', '=', 'Patron')
-                        ->first();
+                        ->firstOrFail();
         $room = Room::where('room_number','=',request('room_number'))
-                        ->first();
-        $CI = Carbon::createFromFormat('Y-m-d',request('check_in'));
-        $CO = Carbon::createFromFormat('Y-m-d',request('check_out'));
+                        ->firstOrFail();
+        $CI = Carbon::createFromFormat('d/m/Y',request('check_in'));
+        $CO = Carbon::createFromFormat('d/m/Y',request('check_out'));
 
         /*Old Vars*/
         $origRoom_id = request('origRoom_id');
@@ -108,12 +108,14 @@ class BookingController extends Controller
             //so delete and re-create instead.
             BookingService::delete($origRoom_id,$origUser_id,$origCheck_in);
 
-            Booking::create([
+            $booking = Booking::create([
                 'user_id' => $user->id,
                 'room_id' => $room->id,
                 'check_in'=> $CI->toDateTimeString(),
                 'check_out'=> $CO->toDateTimeString(),
             ]);
+
+            // dd($booking);
 
             return redirect('admin/bookings');
         }

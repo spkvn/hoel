@@ -20,7 +20,7 @@ class BookingsTableSeeder extends Seeder
 
         DB::table('bookings')->insert([
         	'room_id'  => '2',	
-        	'user_id'  => '5',	
+        	'user_id'  => '9',	
         	'check_in' => '2017/08/14',
         	'check_out'=> '2017/08/16'
         ]);

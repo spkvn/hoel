@@ -12,10 +12,10 @@
 			<input type="email" name="email" id="email" class="form-control" placeholder="email@address.com" value="{{old('email')}}">
 			<hr/>
 			<label for="check_in">Check In</label> 
-			<input type="date" name="check_in" id="check_in" class="form-control" placeholder="{{date('d/m/Y')}}" value="{{old('check_in')}}">
+			<input type="text" name="check_in" id="check_in" class="form-control" placeholder="{{date('d/m/Y')}}" value="{{old('check_in')}}">
 			<hr/>
 			<label for="check_out">Check Out</label> 
-			<input type="date" name="check_out" id="check_out" class="form-control" placeholder="{{date('d/m/Y', strtotime('+1 day'))}}" value="{{old('check_out')}}">
+			<input type="text" name="check_out" id="check_out" class="form-control" placeholder="{{date('d/m/Y', strtotime('+1 day'))}}" value="{{old('check_out')}}">
 			<hr/>
 		</div>
 		@include('layouts.errors')
