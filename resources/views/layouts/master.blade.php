@@ -19,11 +19,8 @@
 
 	<body>
 	@include('layouts.nav')
-	<div style="padding-top:50px; /* for background image z-index: 10;*/" 
-		 class="container">
-		<div>
-			@yield('content')
-		</div>
+	<div class="container">
+		@yield('content')
 	</div>
 	@include('layouts.scripts')
 	</body>
